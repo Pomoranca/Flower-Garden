@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.coffeetime.simplenetworkrequest.ui.landing.LoginViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.landing.LoginFragment">
+
+        <!-- TODO: Update blank fragment layout -->
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Login"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="@+id/passwordTextView"
+            app:layout_constraintStart_toStartOf="@+id/passwordTextView"
+            app:layout_constraintTop_toBottomOf="@+id/passwordTextView" />
+
+        <Button
+            android:id="@+id/registerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Register"
+            android:textAllCaps="false"
+            app:layout_constraintEnd_toEndOf="@+id/passwordTextView"
+            app:layout_constraintStart_toStartOf="@+id/passwordTextView"
+            app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+
+        <EditText
+            android:id="@+id/emailTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Username"
+            android:inputType="textPersonName"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/passwordTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="@+id/emailTextView"
+            app:layout_constraintStart_toStartOf="@+id/emailTextView"
+            app:layout_constraintTop_toBottomOf="@+id/emailTextView" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

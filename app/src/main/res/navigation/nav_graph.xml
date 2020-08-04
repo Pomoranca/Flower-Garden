@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/nav_host_fragment">
+
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="com.coffeetime.simplenetworkrequest.ui.overview.OverviewFragment"
+        android:label="fragment_overview"
+        tools:layout="@layout/fragment_overview" >
+        <action
+            android:id="@+id/action_nav_host_fragment_to_editFlowerFragment"
+            app:destination="@id/editFlowerFragment" />
+        <action
+            android:id="@+id/action_nav_host_fragment_to_addFlowerFragment"
+            app:destination="@id/addFlowerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.coffeetime.simplenetworkrequest.ui.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.coffeetime.simplenetworkrequest.ui.user.UserFragment"
+        android:label="fragment_user"
+        tools:layout="@layout/fragment_user" />
+    <fragment
+        android:id="@+id/favouriteFragment"
+        android:name="com.coffeetime.simplenetworkrequest.ui.favourite.FavouriteFragment"
+        android:label="fragment_favourite"
+        tools:layout="@layout/fragment_favourite" />
+    <fragment
+        android:id="@+id/editFlowerFragment"
+        android:name="com.coffeetime.simplenetworkrequest.ui.detail.EditFlowerFragment"
+        android:label="EditFlowerFragment">
+        <argument
+            android:name="selectedFlower"
+            app:argType="com.coffeetime.simplenetworkrequest.network.Flower"
+            />
+    </fragment>
+    <fragment
+        android:id="@+id/addFlowerFragment"
+        android:name="com.coffeetime.simplenetworkrequest.ui.add.AddFlowerFragment"
+        android:label="fragment_add_flower"
+        tools:layout="@layout/fragment_add_flower" />
+</navigation>
