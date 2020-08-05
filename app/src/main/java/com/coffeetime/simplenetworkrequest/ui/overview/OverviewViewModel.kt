@@ -10,10 +10,12 @@ import com.coffeetime.simplenetworkrequest.network.Flower
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
 import com.coffeetime.simplenetworkrequest.network.UserX
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
+import com.coffeetime.simplenetworkrequest.util.SharedPrefManager.Companion.CURRENT_PAGE
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import retrofit2.await
 import java.lang.Exception
 
 enum class FlowerApiStatus { LOADING, ERROR, DONE }
@@ -48,17 +50,44 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
     private val coroutineScope = CoroutineScope(
         viewModelJob + Dispatchers.Main
     )
-    private val PAGE_NUMBER: Int = 1
 
+    /** Extension function to add flowers to MutableLiveData */
+
+    private fun <T> MutableLiveData<List<T>>.add(item: T) {
+
+        val updatedItems = this.value as ArrayList
+
+        updatedItems.add(item)
+        this.value = updatedItems
+
+    }
 
     init {
         getFlowers()
         getUserInfo()
     }
 
+    /** Shows username on start */
+
+    private fun getUserInfo() {
+        coroutineScope.launch {
+            val token = SharedPrefManager.getInstance(context).getToken()
+            val getUserInfoDeferred = FlowerApi.retrofitService.getInfo(token)
+            try {
+                val userInfo = getUserInfoDeferred.await()
+                _userInfo.value = userInfo.user
+
+            } catch (e: Exception) {
+                showMessage(e.message.toString())
+            }
+        }
+    }
+
+    /** List all flowers */
+
     private fun getFlowers() {
         coroutineScope.launch {
-            val getFlowersDeferred = FlowerApi.retrofitService.getAllFlowersAsync(PAGE_NUMBER)
+            val getFlowersDeferred = FlowerApi.retrofitService.getAllFlowersAsync(CURRENT_PAGE)
 
             try {
                 _status.value =
@@ -68,9 +97,41 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
                     FlowerApiStatus.DONE
 
                 if (listResult.flowers.isNotEmpty()) {
+
                     _flowers.value = listResult.flowers
-                    Log.i("LOGGER", "${listResult.flowers}")
+
                 }
+            } catch (e: Exception) {
+                _status.value =
+                    FlowerApiStatus.ERROR
+
+                _flowers.value = ArrayList()
+
+            }
+        }
+    }
+
+    /** When flowers from page 1 are loaded, load more flowers */
+
+    fun addFlowers() {
+        coroutineScope.launch {
+            val getFlowersDeferred = FlowerApi.retrofitService.getAllFlowersAsync(CURRENT_PAGE)
+
+            try {
+                _status.value =
+                    FlowerApiStatus.LOADING
+                val listResult = getFlowersDeferred.await()
+
+                if (listResult.flowers.isNotEmpty()) {
+                    for (element in listResult.flowers) {
+                        _flowers.add(element)
+                    }
+                    _status.value = FlowerApiStatus.DONE
+
+                } else {
+                    _status.value = FlowerApiStatus.DONE
+                }
+
             } catch (e: Exception) {
                 _status.value =
                     FlowerApiStatus.ERROR
@@ -78,21 +139,7 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
 
             }
         }
-    }
 
-    private fun getUserInfo() {
-        coroutineScope.launch {
-            val token = SharedPrefManager.getInstance(context).getToken()
-            val getUserInfoDeferred = FlowerApi.retrofitService.getInfo(token)
-            try {
-                val userInfo = getUserInfoDeferred.await()
-                _userInfo.value = userInfo.user
-                Log.i("LOGGER", userInfo.user.firstName)
-
-            }catch (e: Exception){
-                showMessage(e.message.toString())
-            }
-        }
     }
 
 
@@ -109,9 +156,11 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
+        CURRENT_PAGE = 1
+
     }
 
-    fun showMessage(message: String){
+    fun showMessage(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 

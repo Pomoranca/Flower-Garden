@@ -77,7 +77,6 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
 //                    SharedPrefManager.getInstance(context).saveUser(email, password, firstName, lastName, dob)
 
                     try {
-                      Log.i("RESPONSE TOKEN", response.body()!!.authToken)
                         _navigateToLandingFragment.value = true
                     } catch (e: Exception) {
                         e.printStackTrace()

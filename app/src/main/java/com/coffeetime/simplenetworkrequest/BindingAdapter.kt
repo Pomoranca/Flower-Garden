@@ -2,6 +2,7 @@ package com.coffeetime.simplenetworkrequest
 
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.net.toUri
@@ -61,6 +62,7 @@ class BindingAdapter {
                 FlowerApiStatus.LOADING -> {
                     statusImageView.visibility = View.VISIBLE
                     statusImageView.setImageResource(R.drawable.loading_animation)
+
                 }
                 FlowerApiStatus.ERROR -> {
                     statusImageView.visibility = View.VISIBLE
@@ -68,6 +70,28 @@ class BindingAdapter {
                 }
                 FlowerApiStatus.DONE -> {
                     statusImageView.visibility = View.GONE
+
+                }
+            }
+        }
+
+        @JvmStatic
+        @BindingAdapter("flowerApiStatus")
+        fun bindStatus(
+            progressBar: ProgressBar,
+            status: FlowerApiStatus?
+        ) {
+            when (status) {
+                FlowerApiStatus.LOADING -> {
+                    progressBar.visibility = View.VISIBLE
+
+                }
+                FlowerApiStatus.ERROR -> {
+                    progressBar.visibility = View.GONE
+                }
+                FlowerApiStatus.DONE -> {
+                    progressBar.visibility = View.GONE
+
                 }
             }
         }

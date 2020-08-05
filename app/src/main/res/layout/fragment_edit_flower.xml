@@ -32,7 +32,12 @@
             android:layout_height="wrap_content"
             android:text="@{viewModel.selectedFlower.latinName}" />
 
-
+        <Button
+            android:id="@+id/buttonFavorite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.markFavoriteFlower()}"
+            android:text="mark as favorite" />
 
 
     </LinearLayout>

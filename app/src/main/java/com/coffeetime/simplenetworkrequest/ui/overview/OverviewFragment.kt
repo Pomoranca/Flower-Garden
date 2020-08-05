@@ -1,18 +1,19 @@
 package com.coffeetime.simplenetworkrequest.ui.overview
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AbsListView
-import android.widget.Toast
+import androidx.core.view.isNotEmpty
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.coffeetime.simplenetworkrequest.databinding.FragmentOverviewBinding
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
+import com.coffeetime.simplenetworkrequest.util.SharedPrefManager.Companion.CURRENT_PAGE
 
 
 class OverviewFragment : Fragment() {
@@ -28,9 +29,10 @@ class OverviewFragment : Fragment() {
 
         val binding = FragmentOverviewBinding.inflate(inflater)
 
+        val CHILD_COUNT = 5
+
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
-
 
 
         binding.logOutButton.setOnClickListener {
@@ -51,11 +53,21 @@ class OverviewFragment : Fragment() {
                     viewModel.displayFlowerDetails(it)
                 })
 
-//        binding.photosGrid.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//
-//            }
-//        })
+
+
+        binding.photosGrid.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+
+                if (binding.photosGrid.isNotEmpty() && !binding.photosGrid.canScrollVertically(1) && binding.photosGrid.childCount > CHILD_COUNT) {
+                    Log.i("SCROLLED", "SCROLLED")
+                    CURRENT_PAGE++
+                    viewModel.addFlowers()
+                    (binding.photosGrid.adapter as PhotoGridAdapter).notifyDataSetChanged()
+
+                }
+            }
+        })
 
         viewModel.navigateToSelectedProperty.observe(viewLifecycleOwner, Observer {
             if (null != it) {

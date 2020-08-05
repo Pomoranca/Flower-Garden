@@ -18,11 +18,11 @@ class LandingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_landing)
 
-        Toast.makeText(
-            this,
-            ("User Logged in: " + SharedPrefManager.getInstance(this).isLoggedIn().toString()),
-            Toast.LENGTH_SHORT
-        ).show()
+//        Toast.makeText(
+//            this,
+//            ("User Logged in: " + SharedPrefManager.getInstance(this).isLoggedIn().toString()),
+//            Toast.LENGTH_SHORT
+//        ).show()
 
 
     }

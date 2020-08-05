@@ -42,7 +42,6 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
             try {
                 val userInfo = getUserInfoDeferred.await()
                 _user.value = userInfo.user
-                Log.i("LOGGER", userInfo.user.firstName)
 
             } catch (e: Exception) {
                 showMessage(e.message.toString())

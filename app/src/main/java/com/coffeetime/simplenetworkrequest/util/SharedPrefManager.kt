@@ -77,6 +77,7 @@ class SharedPrefManager(private val context: Context) {
     companion object {
         private val SHARED_PREF_NAME = "saved"
         private var mInstance: SharedPrefManager? = null
+        var CURRENT_PAGE = 1
 
         @Synchronized
         fun getInstance(mCtx: Context): SharedPrefManager {

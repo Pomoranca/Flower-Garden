@@ -20,11 +20,11 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(bottomNavigation, navController)
 
 
-        Toast.makeText(
-            this,
-            ("User Logged in: " + SharedPrefManager.getInstance(this).isLoggedIn().toString()),
-            Toast.LENGTH_SHORT
-        ).show()
+//        Toast.makeText(
+//            this,
+//            ("User Logged in: " + SharedPrefManager.getInstance(this).isLoggedIn().toString()),
+//            Toast.LENGTH_SHORT
+//        ).show()
     }
 
 

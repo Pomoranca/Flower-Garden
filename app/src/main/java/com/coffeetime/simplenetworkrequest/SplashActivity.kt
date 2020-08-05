@@ -15,35 +15,15 @@ import kotlinx.coroutines.launch
 
 
 class SplashActivity : Activity() {
-    /** Duration of wait  */
-    private val SPLASH_DISPLAY_LENGTH = 1000
 
-    /** Called when the activity is first created.  */
     public override fun onCreate(icicle: Bundle?) {
         super.onCreate(icicle)
         setContentView(R.layout.activity_splash)
-
-        /* New Handler to start the Menu-Activity
-         * and close this Splash-Screen after some seconds.*/Handler()
-//            .postDelayed({ /* Create an Intent that will start the Menu-Activity. */
-//                val mainIntent = Intent(this@SplashActivity, MainActivity::class.java)
-//                this@SplashActivity.startActivity(mainIntent)
-//                finish()
-//            }, SPLASH_DISPLAY_LENGTH.toLong())
-
-        Toast.makeText(
-            this,
-            ("User Logged in: " + SharedPrefManager.getInstance(this).isLoggedIn().toString()),
-            Toast.LENGTH_SHORT
-        ).show()
-
-
 
         CoroutineScope(Dispatchers.Main).launch {
             startAnimation()
             startActivity()
         }
-
 
     }
 
@@ -53,8 +33,7 @@ class SplashActivity : Activity() {
 
     }
 
-
-    fun startActivity() {
+    private fun startActivity() {
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             startActivity(Intent(this, MainActivity::class.java))
         } else {
