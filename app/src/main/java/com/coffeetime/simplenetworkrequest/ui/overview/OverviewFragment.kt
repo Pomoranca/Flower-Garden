@@ -31,6 +31,8 @@ class OverviewFragment : Fragment() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
 
+
+
         binding.logOutButton.setOnClickListener {
             SharedPrefManager.getInstance(requireContext()).clear()
             requireActivity().onBackPressed()
@@ -39,7 +41,7 @@ class OverviewFragment : Fragment() {
 
         viewModel.userInfo.observe(viewLifecycleOwner, Observer {
             if (it != null) {
-                binding.helloTextView.text = "Welcome ${it.firstName}"
+                binding.helloTextView.text = "Welcome ${it.firstName.capitalize()}"
             }
         })
 

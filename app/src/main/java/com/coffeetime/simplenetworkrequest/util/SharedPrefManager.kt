@@ -3,15 +3,22 @@ package com.coffeetime.simplenetworkrequest.util
 import android.content.Context
 import com.coffeetime.simplenetworkrequest.network.User
 
-class SharedPrefManager(context: Context) {
+class SharedPrefManager(private val context: Context) {
 
-    val sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
-    val editor = sharedPreferences.edit()
 
-    val isLoggedIn: Boolean = sharedPreferences.getBoolean("loggedIn", false)
+    fun isLoggedIn(): Boolean {
+        val sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
 
-    fun logIn(){
+        return sharedPreferences.getBoolean("loggedIn", false)
+    }
+
+    fun logIn() {
+        val sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
+
+        val editor = sharedPreferences.edit()
+
         editor.putBoolean("loggedIn", true)
+        editor.commit()
     }
 
 //    val user: User
@@ -26,16 +33,26 @@ class SharedPrefManager(context: Context) {
 //        }
 
     fun saveToken(token: String) {
+        val sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
+
+        val editor = sharedPreferences.edit()
+
         editor.putString("TOKEN_VALUE", token).apply()
     }
 
-    fun getToken() : String {
+    fun getToken(): String {
+        val sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
+
         return sharedPreferences.getString("TOKEN_VALUE", "")!!
     }
 
     fun clear() {
+        val sharedPreferences = context.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        editor.putBoolean("loggedIn", false)
         editor.clear()
-        editor.apply()
+        editor.commit()
     }
 
 //    fun saveUser(

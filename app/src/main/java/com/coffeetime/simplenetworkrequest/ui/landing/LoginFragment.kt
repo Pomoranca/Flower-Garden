@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -28,12 +29,6 @@ class LoginFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentLoginBinding.inflate(inflater)
         binding.viewModel = viewModel
-        val isLoggedin = SharedPrefManager.getInstance(requireContext()).isLoggedIn
-
-        if (isLoggedin) {
-            startMainActivity()
-
-        }
 
         binding.registerButton.setOnClickListener {
             it.findNavController()
@@ -50,6 +45,10 @@ class LoginFragment : Fragment() {
                 binding.emailTextView.text.toString(),
                 binding.passwordTextView.text.toString()
             )
+        }
+
+        if(SharedPrefManager.getInstance(requireContext()).isLoggedIn()){
+            requireActivity().finish()
         }
 
         return binding.root

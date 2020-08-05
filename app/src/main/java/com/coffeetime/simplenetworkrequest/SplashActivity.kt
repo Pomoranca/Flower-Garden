@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.widget.Toast
 import com.coffeetime.simplenetworkrequest.ui.landing.LandingActivity
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
 import kotlinx.android.synthetic.main.activity_splash.*
@@ -30,6 +31,14 @@ class SplashActivity : Activity() {
 //                finish()
 //            }, SPLASH_DISPLAY_LENGTH.toLong())
 
+        Toast.makeText(
+            this,
+            ("User Logged in: " + SharedPrefManager.getInstance(this).isLoggedIn().toString()),
+            Toast.LENGTH_SHORT
+        ).show()
+
+
+
         CoroutineScope(Dispatchers.Main).launch {
             startAnimation()
             startActivity()
@@ -46,7 +55,7 @@ class SplashActivity : Activity() {
 
 
     fun startActivity() {
-        if (SharedPrefManager.getInstance(this).isLoggedIn) {
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
             startActivity(Intent(this, MainActivity::class.java))
         } else {
             startActivity(Intent(this, LandingActivity::class.java))
