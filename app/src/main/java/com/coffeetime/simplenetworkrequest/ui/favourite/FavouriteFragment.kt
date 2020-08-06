@@ -10,11 +10,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.coffeetime.simplenetworkrequest.R
 import com.coffeetime.simplenetworkrequest.databinding.FragmentFavouriteBinding
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 
 class FavouriteFragment : Fragment() {
 
@@ -29,14 +24,14 @@ class FavouriteFragment : Fragment() {
         // Inflate the layout for this fragment
         val binding = FragmentFavouriteBinding.inflate(inflater)
 
-        viewModel.favoriteFlower.observe(viewLifecycleOwner, Observer {
-            if(it != null) {
-                for (i in it.favFlowers.indices) {
-                    binding.textFavorite.append(it.favFlowers[i].flower.name)
+        binding.lifecycleOwner = this
+        binding.viewmodel = viewModel
 
-                }
-            }
-        })
+        binding.favoritePhotosGrid.adapter =
+            FavoriteGridAdapter(
+                FavoriteGridAdapter.OnClickListener {
+//                    viewModel.displayFlowerDetails(it)
+                })
 
 
         return binding.root

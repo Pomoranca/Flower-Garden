@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.coffeetime.simplenetworkrequest.network.FavFlower
+import com.coffeetime.simplenetworkrequest.network.FavFlowerX
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
 import kotlinx.coroutines.CoroutineScope
@@ -21,10 +22,10 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
 
     val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private val _favoriteFlowers = MutableLiveData<FavFlower>()
+    private val _favoriteFlowers = MutableLiveData<List<FavFlowerX>>()
 
-    val favoriteFlower : LiveData<FavFlower>
-    get() = _favoriteFlowers
+    val favoriteFlower: LiveData<List<FavFlowerX>>
+        get() = _favoriteFlowers
 
     private val token = SharedPrefManager.getInstance(context).getToken()
 
@@ -36,9 +37,12 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
         coroutineScope.launch {
             val getFavoriteFlowers = FlowerApi.retrofitService.getFavoriteFlowers(token)
             try {
-            _favoriteFlowers.value = getFavoriteFlowers.await()
+                val listResult = getFavoriteFlowers.await()
+                if (listResult.favFlowers.isNotEmpty()) {
+                    _favoriteFlowers.value = getFavoriteFlowers.await().favFlowers
+                }
             } catch (e: Exception) {
-            Log.i("ERROR", "List flowers error: " +  e.localizedMessage!!)
+                Log.i("ERROR", "List flowers error: " + e.localizedMessage!!)
             }
         }
     }

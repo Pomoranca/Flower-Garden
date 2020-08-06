@@ -11,7 +11,10 @@ import androidx.paging.PagedList
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.coffeetime.simplenetworkrequest.network.FavFlowerX
 import com.coffeetime.simplenetworkrequest.network.Flower
+import com.coffeetime.simplenetworkrequest.network.FlowerX
+import com.coffeetime.simplenetworkrequest.ui.favourite.FavoriteGridAdapter
 import com.coffeetime.simplenetworkrequest.ui.landing.UserApiStatus
 import com.coffeetime.simplenetworkrequest.ui.overview.FlowerApiStatus
 import com.coffeetime.simplenetworkrequest.ui.overview.PhotoGridAdapter
@@ -41,6 +44,11 @@ class BindingAdapter {
         fun TextView.setName(item: Flower) {
             text = item.name
         }
+        @JvmStatic
+        @BindingAdapter("name")
+        fun TextView.setName(item: FavFlowerX) {
+            text = item.flower.name
+        }
 
         @JvmStatic
         @BindingAdapter("listData")
@@ -49,6 +57,16 @@ class BindingAdapter {
             data: List<Flower>?
         ) {
             val adapter = recyclerView.adapter as PhotoGridAdapter
+            adapter.submitList(data)
+        }
+
+        @JvmStatic
+        @BindingAdapter("listFavoriteData")
+        fun bindRecyclerViewFavorite(
+            recyclerView: RecyclerView,
+            data: List<FavFlowerX>?
+        ) {
+            val adapter = recyclerView.adapter as FavoriteGridAdapter
             adapter.submitList(data)
         }
 

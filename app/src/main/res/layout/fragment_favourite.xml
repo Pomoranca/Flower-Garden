@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="viewmodel"
+            type="com.coffeetime.simplenetworkrequest.ui.favourite.FavoriteViewModel" />
     </data>
 
     <FrameLayout
@@ -12,11 +16,16 @@
         tools:context=".ui.favourite.FavouriteFragment">
 
         <!-- TODO: Update blank fragment layout -->
-        <TextView
-            android:id="@+id/textFavorite"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/favorite_photos_grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="FAVORITE FLOWERS:"/>
+            android:layout_marginTop="16dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:listFavoriteData="@{viewmodel.favoriteFlower}"
+            app:spanCount="2"
+            tools:itemCount="16"
+            tools:listitem="@layout/favorite_grid_view_item" />
 
     </FrameLayout>
 </layout>
