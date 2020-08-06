@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.coffeetime.simplenetworkrequest.network.FavFlowerX
 import com.coffeetime.simplenetworkrequest.network.Flower
-import com.coffeetime.simplenetworkrequest.ui.favorite.FavoriteGridAdapter
+import com.coffeetime.simplenetworkrequest.ui.favourite.FavoriteGridAdapter
 import com.coffeetime.simplenetworkrequest.ui.overview.FlowerApiStatus
 import com.coffeetime.simplenetworkrequest.ui.overview.PhotoGridAdapter
 

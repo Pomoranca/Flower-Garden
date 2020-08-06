@@ -19,11 +19,11 @@ interface FlowerApiService {
 
     /** Get list of all flowers on specific page */
     @GET("flowers")
-    fun getAllFlowersAsync(@Query("page") page: Int): Deferred<Flowers>
+    suspend fun getAllFlowersAsync(@Query("page") page: Int): Flowers
 
     /** Get logged in user info */
     @GET("users/me")
-    fun getInfo(@Header("Authorization") auth: String): Deferred<UserInfo>
+    suspend fun getInfo(@Header("Authorization") auth: String): UserInfo
 
     /** Register user */
     @FormUrlEncoded
@@ -46,7 +46,7 @@ interface FlowerApiService {
 
     /**List favorite flowers */
     @GET("flowers/favorites")
-    fun getFavoriteFlowers(@Header("Authorization") auth: String): Deferred<FavFlower>
+    suspend fun getFavoriteFlowers(@Header("Authorization") auth: String): FavFlower
 
     /**Mark flower as favorite */
     @POST("flowers/{flower_id}/favorites")

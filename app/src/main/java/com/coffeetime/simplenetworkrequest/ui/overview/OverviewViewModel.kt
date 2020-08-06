@@ -71,8 +71,7 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
             val token = SharedPrefManager.getInstance(context).getToken()
             val getUserInfoDeferred = FlowerApi.retrofitService.getInfo(token)
             try {
-                val userInfo = getUserInfoDeferred.await()
-                _userInfo.value = userInfo.user
+                _userInfo.value = getUserInfoDeferred.user
 
             } catch (e: Exception) {
                 showMessage(e.message.toString())
@@ -89,13 +88,12 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
             try {
                 _status.value =
                     FlowerApiStatus.LOADING
-                val listResult = getFlowersDeferred.await()
-                _status.value =
-                    FlowerApiStatus.DONE
 
-                if (listResult.flowers.isNotEmpty()) {
+                if (getFlowersDeferred.flowers.isNotEmpty()) {
 
-                    _flowers.value = listResult.flowers
+                    _flowers.value = getFlowersDeferred.flowers
+                    _status.value =
+                        FlowerApiStatus.DONE
 
                 }
             } catch (e: Exception) {
@@ -117,10 +115,9 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
             try {
                 _status.value =
                     FlowerApiStatus.LOADING
-                val listResult = getFlowersDeferred.await()
 
-                if (listResult.flowers.isNotEmpty()) {
-                    for (element in listResult.flowers) {
+                if (getFlowersDeferred.flowers.isNotEmpty()) {
+                    for (element in getFlowersDeferred.flowers) {
                         _flowers.add(element)
                     }
                     _status.value = FlowerApiStatus.DONE
@@ -157,7 +154,7 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
 
     }
 
-    fun showMessage(message: String) {
+    private fun showMessage(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 

@@ -24,11 +24,11 @@ class EditFlowerViewModel(flower: Flower, app: Application) : AndroidViewModel(a
     val selectedFlower: LiveData<Flower>
         get() = _selectedFlower
 
-    val _markedAsFavorite = MutableLiveData<Boolean>()
+    private val _markedAsFavorite = MutableLiveData<Boolean>()
 
-    val viewModelJob = Job()
+    private val viewModelJob = Job()
 
-    val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     /** Mark flower as favorite */
     fun markFavoriteFlower() {

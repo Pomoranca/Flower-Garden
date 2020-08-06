@@ -1,4 +1,4 @@
-package com.coffeetime.simplenetworkrequest.ui.favorite
+package com.coffeetime.simplenetworkrequest.ui.favourite
 
 import android.app.Application
 import android.util.Log
@@ -14,11 +14,11 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
-    val context = getApplication<Application>().applicationContext
+    val context = getApplication<Application>().applicationContext!!
 
-    val viewModelJob = Job()
+    private val viewModelJob = Job()
 
-    val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val _favoriteFlowers = MutableLiveData<List<FavFlowerX>>()
 
@@ -31,13 +31,12 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
         listFavoriteFlowers()
     }
 
-    fun listFavoriteFlowers() {
+    private fun listFavoriteFlowers() {
         coroutineScope.launch {
             val getFavoriteFlowers = FlowerApi.retrofitService.getFavoriteFlowers(token)
             try {
-                val listResult = getFavoriteFlowers.await()
-                if (listResult.favFlowers.isNotEmpty()) {
-                    _favoriteFlowers.value = getFavoriteFlowers.await().favFlowers
+                if (getFavoriteFlowers.favFlowers.isNotEmpty()) {
+                    _favoriteFlowers.value = getFavoriteFlowers.favFlowers
                 }
             } catch (e: Exception) {
                 Log.i("ERROR", "List flowers error: " + e.localizedMessage!!)

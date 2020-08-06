@@ -29,7 +29,7 @@
         tools:layout="@layout/fragment_user" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.coffeetime.simplenetworkrequest.ui.favorite.FavouriteFragment"
+        android:name="com.coffeetime.simplenetworkrequest.ui.favourite.FavouriteFragment"
         android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment

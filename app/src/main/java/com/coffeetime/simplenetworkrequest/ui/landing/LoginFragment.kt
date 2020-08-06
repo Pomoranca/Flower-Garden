@@ -51,7 +51,7 @@ class LoginFragment : Fragment() {
         return binding.root
     }
 
-    fun startMainActivity() {
+    private fun startMainActivity() {
         startActivity(Intent(activity, MainActivity::class.java))
         viewModel.doneNavigating()
     }

@@ -18,9 +18,9 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
     private val context = getApplication<Application>().applicationContext
 
 
-    val viewModelJob = Job()
+    private val viewModelJob = Job()
 
-    val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
     private val _user = MutableLiveData<UserX>()
 
@@ -36,15 +36,14 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
             val token = SharedPrefManager.getInstance(context).getToken()
             val getUserInfoDeferred = FlowerApi.retrofitService.getInfo(token)
             try {
-                val userInfo = getUserInfoDeferred.await()
-                _user.value = userInfo.user
+                _user.value = getUserInfoDeferred.user
 
             } catch (e: Exception) {
                 showMessage(e.message.toString())
             }
         }
     }
-    fun showMessage(message: String){
+    private fun showMessage(message: String){
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }
