@@ -1,21 +1,17 @@
 package com.coffeetime.simplenetworkrequest.ui.user
 
 import android.app.Application
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
-import com.coffeetime.simplenetworkrequest.network.User
 import com.coffeetime.simplenetworkrequest.network.UserX
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class UserViewModel(application: Application) : AndroidViewModel(application) {
 

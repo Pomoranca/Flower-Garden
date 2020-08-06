@@ -3,8 +3,6 @@ package com.coffeetime.simplenetworkrequest
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.widget.Toast
 import com.coffeetime.simplenetworkrequest.ui.landing.LandingActivity
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
 import kotlinx.android.synthetic.main.activity_splash.*

@@ -1,14 +1,12 @@
 package com.coffeetime.simplenetworkrequest.ui.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import com.coffeetime.simplenetworkrequest.R
 import com.coffeetime.simplenetworkrequest.databinding.FragmentEditFlowerBinding
-import kotlinx.coroutines.flow.flow
 
 
 class EditFlowerFragment : Fragment() {

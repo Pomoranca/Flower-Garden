@@ -28,10 +28,10 @@
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" />
     <fragment
-        android:id="@+id/favouriteFragment"
-        android:name="com.coffeetime.simplenetworkrequest.ui.favourite.FavouriteFragment"
-        android:label="fragment_favourite"
-        tools:layout="@layout/fragment_favourite" />
+        android:id="@+id/favoriteFragment"
+        android:name="com.coffeetime.simplenetworkrequest.ui.favorite.FavouriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/editFlowerFragment"
         android:name="com.coffeetime.simplenetworkrequest.ui.detail.EditFlowerFragment"

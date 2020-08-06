@@ -1,16 +1,12 @@
 package com.coffeetime.simplenetworkrequest.ui.landing
 
 import android.app.Application
-import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
 import com.coffeetime.simplenetworkrequest.network.NetworkResponse
-import com.coffeetime.simplenetworkrequest.network.User
-import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -20,7 +16,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-enum class UserApiStatus { LOADING, ERROR, DONE }
+enum class UserApiStatus {}
 
 class RegisterViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -29,13 +25,7 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
 
     private val _token = MutableLiveData<String>()
 
-    val token: LiveData<String>
-        get() = _token
-
     private val _status = MutableLiveData<UserApiStatus>()
-
-    val status: LiveData<UserApiStatus>
-        get() = _status
 
 
     private val _navigateToLandingFragment = MutableLiveData<Boolean>()
@@ -50,7 +40,6 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
 
 
     private var viewModelJob = Job()
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.IO)
 
     fun registerUser(
         email: String,

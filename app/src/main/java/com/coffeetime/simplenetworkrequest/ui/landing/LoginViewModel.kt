@@ -1,16 +1,10 @@
 package com.coffeetime.simplenetworkrequest.ui.landing
 
 import android.app.Application
-import android.content.Intent
-import android.net.Network
-import android.util.Log
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.coffeetime.simplenetworkrequest.MainActivity
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
 import com.coffeetime.simplenetworkrequest.network.NetworkResponse
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager

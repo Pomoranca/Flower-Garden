@@ -7,13 +7,13 @@
 
         <variable
             name="viewmodel"
-            type="com.coffeetime.simplenetworkrequest.ui.favourite.FavoriteViewModel" />
+            type="com.coffeetime.simplenetworkrequest.ui.favorite.FavoriteViewModel" />
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.favourite.FavouriteFragment">
+        tools:context=".ui.favorite.FavouriteFragment">
 
         <!-- TODO: Update blank fragment layout -->
         <androidx.recyclerview.widget.RecyclerView

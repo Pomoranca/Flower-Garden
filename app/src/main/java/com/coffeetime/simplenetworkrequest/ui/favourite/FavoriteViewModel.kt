@@ -1,11 +1,10 @@
-package com.coffeetime.simplenetworkrequest.ui.favourite
+package com.coffeetime.simplenetworkrequest.ui.favorite
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.coffeetime.simplenetworkrequest.network.FavFlower
 import com.coffeetime.simplenetworkrequest.network.FavFlowerX
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
@@ -13,7 +12,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class FavoriteViewModel(application: Application) : AndroidViewModel(application) {
     val context = getApplication<Application>().applicationContext

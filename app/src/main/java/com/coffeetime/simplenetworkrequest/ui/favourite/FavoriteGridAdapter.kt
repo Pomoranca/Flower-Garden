@@ -1,4 +1,4 @@
-package com.coffeetime.simplenetworkrequest.ui.favourite
+package com.coffeetime.simplenetworkrequest.ui.favorite
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

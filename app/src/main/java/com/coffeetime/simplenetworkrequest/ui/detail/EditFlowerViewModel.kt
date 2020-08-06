@@ -26,9 +26,6 @@ class EditFlowerViewModel(flower: Flower, app: Application) : AndroidViewModel(a
 
     val _markedAsFavorite = MutableLiveData<Boolean>()
 
-    val markedAsFavorite : LiveData<Boolean>
-    get() = _markedAsFavorite
-
     val viewModelJob = Job()
 
     val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)

@@ -1,7 +1,6 @@
 package com.coffeetime.simplenetworkrequest.ui.overview
 
 import android.app.Application
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -15,8 +14,6 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import retrofit2.await
-import java.lang.Exception
 
 enum class FlowerApiStatus { LOADING, ERROR, DONE }
 

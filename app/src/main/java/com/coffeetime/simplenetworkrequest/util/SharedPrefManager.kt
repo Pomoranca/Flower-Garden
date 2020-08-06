@@ -1,7 +1,6 @@
 package com.coffeetime.simplenetworkrequest.util
 
 import android.content.Context
-import com.coffeetime.simplenetworkrequest.network.User
 
 class SharedPrefManager(private val context: Context) {
 
