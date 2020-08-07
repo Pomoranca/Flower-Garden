@@ -1,4 +1,4 @@
-package com.coffeetime.simplenetworkrequest.network
+package com.coffeetime.simplenetworkrequest.network.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

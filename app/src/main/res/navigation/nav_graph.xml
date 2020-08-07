@@ -38,7 +38,7 @@
         android:label="EditFlowerFragment">
         <argument
             android:name="selectedFlower"
-            app:argType="com.coffeetime.simplenetworkrequest.network.Flower"
+            app:argType="com.coffeetime.simplenetworkrequest.network.models.Flower"
             />
     </fragment>
     <fragment

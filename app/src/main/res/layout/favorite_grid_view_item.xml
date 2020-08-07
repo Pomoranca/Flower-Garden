@@ -6,14 +6,15 @@
     <data>
         <variable
             name="flowerX"
-            type="com.coffeetime.simplenetworkrequest.network.FavFlowerX" />
+            type="com.coffeetime.simplenetworkrequest.network.models.FavoriteFlower" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/greenBackground">
         <LinearLayout
-            android:layout_margin="6dp"
+            android:background="@color/greenBackground"
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">

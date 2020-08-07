@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.coffeetime.simplenetworkrequest.network.FavFlowerX
+import com.coffeetime.simplenetworkrequest.network.models.FavoriteFlower
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
 import kotlinx.coroutines.CoroutineScope
@@ -20,9 +20,9 @@ class FavoriteViewModel(application: Application) : AndroidViewModel(application
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private val _favoriteFlowers = MutableLiveData<List<FavFlowerX>>()
+    private val _favoriteFlowers = MutableLiveData<List<FavoriteFlower>>()
 
-    val favoriteFlower: LiveData<List<FavFlowerX>>
+    val favoriteFlower: LiveData<List<FavoriteFlower>>
         get() = _favoriteFlowers
 
     private val token = SharedPrefManager.getInstance(context).getToken()

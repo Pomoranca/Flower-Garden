@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
-import com.coffeetime.simplenetworkrequest.network.UserX
+import com.coffeetime.simplenetworkrequest.network.models.User
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -22,9 +22,9 @@ class UserViewModel(application: Application) : AndroidViewModel(application) {
 
     private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    private val _user = MutableLiveData<UserX>()
+    private val _user = MutableLiveData<User>()
 
-    val user: LiveData<UserX>
+    val user: LiveData<User>
         get() = _user
 
     init {

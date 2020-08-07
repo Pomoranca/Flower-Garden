@@ -1,9 +1,9 @@
-package com.coffeetime.simplenetworkrequest.network
+package com.coffeetime.simplenetworkrequest.network.models
 
 
 import com.google.gson.annotations.SerializedName
 
-data class FavFlowerX(
+data class FavoriteFlower(
     val flower: FlowerX,
     val id: Int,
     @SerializedName("user_id")

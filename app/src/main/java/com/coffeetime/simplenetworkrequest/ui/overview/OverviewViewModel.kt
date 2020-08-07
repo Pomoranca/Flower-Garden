@@ -5,9 +5,9 @@ import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.coffeetime.simplenetworkrequest.network.Flower
+import com.coffeetime.simplenetworkrequest.network.models.Flower
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
-import com.coffeetime.simplenetworkrequest.network.UserX
+import com.coffeetime.simplenetworkrequest.network.models.User
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager.Companion.CURRENT_PAGE
 import kotlinx.coroutines.CoroutineScope
@@ -32,9 +32,9 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
     val flowers: LiveData<List<Flower>>
         get() = _flowers
 
-    private val _userInfo = MutableLiveData<UserX>()
+    private val _userInfo = MutableLiveData<User>()
 
-    val userInfo: LiveData<UserX>
+    val userInfo: LiveData<User>
         get() = _userInfo
 
     private val _navigateToSelectedFlower = MutableLiveData<Flower>()
@@ -74,7 +74,6 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
                 _userInfo.value = getUserInfoDeferred.user
 
             } catch (e: Exception) {
-                showMessage(e.message.toString())
             }
         }
     }
@@ -86,6 +85,7 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
             val getFlowersDeferred = FlowerApi.retrofitService.getAllFlowersAsync(CURRENT_PAGE)
 
             try {
+
                 _status.value =
                     FlowerApiStatus.LOADING
 
@@ -153,10 +153,5 @@ class OverviewViewModel(application: Application) : AndroidViewModel(application
         CURRENT_PAGE = 1
 
     }
-
-    private fun showMessage(message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-    }
-
 
 }

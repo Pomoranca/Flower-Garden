@@ -6,15 +6,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.coffeetime.simplenetworkrequest.databinding.FavoriteGridViewItemBinding
-import com.coffeetime.simplenetworkrequest.network.FavFlowerX
+import com.coffeetime.simplenetworkrequest.network.models.FavoriteFlower
 
 class FavoriteGridAdapter(private val onClickListener: OnClickListener) :
-    ListAdapter<FavFlowerX, FavoriteGridAdapter.FavoriteFlowerViewHolder>(FLOWER_COMPARATOR) {
+    ListAdapter<FavoriteFlower, FavoriteGridAdapter.FavoriteFlowerViewHolder>(FLOWER_COMPARATOR) {
 
     class FavoriteFlowerViewHolder(private var binding: FavoriteGridViewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(flower: FavFlowerX) {
+        fun bind(flower: FavoriteFlower) {
             binding.flowerX = flower
         }
     }
@@ -31,17 +31,17 @@ class FavoriteGridAdapter(private val onClickListener: OnClickListener) :
         holder.bind(flower)
     }
 
-    class OnClickListener(val clickListener: (flower: FavFlowerX) -> Unit) {
-        fun onClick(flower: FavFlowerX) = clickListener(flower)
+    class OnClickListener(val clickListener: (flower: FavoriteFlower) -> Unit) {
+        fun onClick(flower: FavoriteFlower) = clickListener(flower)
     }
 
     companion object {
-        private val FLOWER_COMPARATOR = object : DiffUtil.ItemCallback<FavFlowerX>() {
-            override fun areItemsTheSame(oldItem: FavFlowerX, newItem: FavFlowerX): Boolean {
+        private val FLOWER_COMPARATOR = object : DiffUtil.ItemCallback<FavoriteFlower>() {
+            override fun areItemsTheSame(oldItem: FavoriteFlower, newItem: FavoriteFlower): Boolean {
                 return oldItem === newItem
             }
 
-            override fun areContentsTheSame(oldItem: FavFlowerX, newItem: FavFlowerX): Boolean {
+            override fun areContentsTheSame(oldItem: FavoriteFlower, newItem: FavoriteFlower): Boolean {
                 return oldItem.id == newItem.id
             }
         }

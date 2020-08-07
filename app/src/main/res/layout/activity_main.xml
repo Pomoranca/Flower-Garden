@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/greenBackground"
     tools:context=".MainActivity">
 
     <fragment
@@ -20,6 +21,11 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
+        android:background="@color/bottomNavBackgrounds"
+        app:itemIconTint="@color/bottom_nav_icon_selector"
+        app:itemTextAppearanceActive="@style/bottomNavFont"
+        app:itemTextAppearanceInactive="@style/bottomNavFont"
+        app:itemTextColor="@color/bottom_nav_icon_selector"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
 

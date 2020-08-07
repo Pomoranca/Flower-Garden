@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.coffeetime.simplenetworkrequest.network.Flower
+import com.coffeetime.simplenetworkrequest.network.models.Flower
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
 import kotlinx.coroutines.CoroutineScope

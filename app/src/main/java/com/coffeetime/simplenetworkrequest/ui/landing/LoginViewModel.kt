@@ -6,7 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.coffeetime.simplenetworkrequest.network.FlowerApi
-import com.coffeetime.simplenetworkrequest.network.NetworkResponse
+import com.coffeetime.simplenetworkrequest.network.models.NetworkResponse
 import com.coffeetime.simplenetworkrequest.util.SharedPrefManager
 import org.json.JSONObject
 import retrofit2.Call

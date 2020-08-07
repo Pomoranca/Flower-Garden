@@ -3,7 +3,7 @@ package com.coffeetime.simplenetworkrequest.ui.detail
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.coffeetime.simplenetworkrequest.network.Flower
+import com.coffeetime.simplenetworkrequest.network.models.Flower
 
 class EditFlowerViewModelFactory(
     private val flower: Flower,

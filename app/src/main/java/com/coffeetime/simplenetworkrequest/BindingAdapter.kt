@@ -9,8 +9,8 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.coffeetime.simplenetworkrequest.network.FavFlowerX
-import com.coffeetime.simplenetworkrequest.network.Flower
+import com.coffeetime.simplenetworkrequest.network.models.FavoriteFlower
+import com.coffeetime.simplenetworkrequest.network.models.Flower
 import com.coffeetime.simplenetworkrequest.ui.favourite.FavoriteGridAdapter
 import com.coffeetime.simplenetworkrequest.ui.overview.FlowerApiStatus
 import com.coffeetime.simplenetworkrequest.ui.overview.PhotoGridAdapter
@@ -42,7 +42,7 @@ class BindingAdapter {
         }
         @JvmStatic
         @BindingAdapter("name")
-        fun TextView.setName(item: FavFlowerX) {
+        fun TextView.setName(item: FavoriteFlower) {
             text = item.flower.name
         }
 
@@ -60,7 +60,7 @@ class BindingAdapter {
         @BindingAdapter("listFavoriteData")
         fun bindRecyclerViewFavorite(
             recyclerView: RecyclerView,
-            data: List<FavFlowerX>?
+            data: List<FavoriteFlower>?
         ) {
             val adapter = recyclerView.adapter as FavoriteGridAdapter
             adapter.submitList(data)

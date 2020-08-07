@@ -1,7 +1,7 @@
 package com.coffeetime.simplenetworkrequest.network
 
+import com.coffeetime.simplenetworkrequest.network.models.*
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -46,7 +46,7 @@ interface FlowerApiService {
 
     /**List favorite flowers */
     @GET("flowers/favorites")
-    suspend fun getFavoriteFlowers(@Header("Authorization") auth: String): FavFlower
+    suspend fun getFavoriteFlowers(@Header("Authorization") auth: String): FavoriteFlowerList
 
     /**Mark flower as favorite */
     @POST("flowers/{flower_id}/favorites")

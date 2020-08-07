@@ -17,6 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/greenBackground"
         tools:context=".ui.overview.OverviewFragment">
 
         <!-- TODO: Update blank fragment layout -->
@@ -25,6 +26,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
+            android:background="@color/greenBackground"
+            android:clipToPadding="false"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -50,21 +55,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text=""
-            android:textSize="18sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@+id/logOutButton"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/logOutButton" />
+            app:layout_constraintTop_toTopOf="@+id/logOutButton"
+            tools:text="Welcome Montserrat" />
 
         <Button
             android:id="@+id/logOutButton"
+            style="@style/ButtonContinue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:text="Log out"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -76,6 +82,16 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:padding="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/top_banner" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

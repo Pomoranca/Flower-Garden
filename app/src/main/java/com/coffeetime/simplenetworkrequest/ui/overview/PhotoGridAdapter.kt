@@ -23,7 +23,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.coffeetime.simplenetworkrequest.databinding.GridViewItemBinding
-import com.coffeetime.simplenetworkrequest.network.Flower
+import com.coffeetime.simplenetworkrequest.network.models.Flower
 
 
 /**

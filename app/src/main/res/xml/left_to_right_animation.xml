@@ -74,6 +74,12 @@
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            motion:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/splash_back_image"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintStart_toStartOf="parent" />
 
     </ConstraintSet>
 
